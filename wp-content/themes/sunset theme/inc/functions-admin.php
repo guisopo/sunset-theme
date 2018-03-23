@@ -44,6 +44,7 @@
     register_setting( 'sunset-settings-group', 'first_name' );
     register_setting( 'sunset-settings-group', 'last_name' );
     register_setting( 'sunset-settings-group', 'twitter_handler' );
+    register_setting( 'sunset-settings-group', 'facebook_handler' );
     add_settings_section( 'sunset-sidebar-options', //$id of the section
                           'Sidebar Options',        //$title of the section
                           'sunset_sidebar_options', //$callback function fills the section with the desired content
@@ -59,6 +60,12 @@
     add_settings_field( 'sidebar-twitter',
                         'Twitter handler',
                         'sunset_sidebar_twitter', //we use another $callback
+                        'guisopo_sunset',
+                        'sunset-sidebar-options'
+                      );
+    add_settings_field( 'sidebar-facebook',
+                        'Facebook handler',
+                        'sunset_sidebar_facebook', //we use another $callback
                         'guisopo_sunset',
                         'sunset-sidebar-options'
                       );
@@ -85,6 +92,11 @@
   function sunset_sidebar_twitter() {
     $twitter = esc_attr( get_option( 'twitter_handler'));
     echo '<input type="text" name="twitter_handler" value="'.$twitter.'" placeHolder="Twitter Handler" />';
+  }
+
+  function sunset_sidebar_facebook() {
+    $twitter = esc_attr( get_option( 'facebook_handler'));
+    echo '<input type="text" name="facebook_handler" value="'.$facebook.'" placeHolder="Facebook Handler" />';
   }
 
   //generation of our CSS page
