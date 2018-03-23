@@ -45,6 +45,8 @@
     register_setting( 'sunset-settings-group', 'last_name' );
     register_setting( 'sunset-settings-group', 'twitter_handler' );
     register_setting( 'sunset-settings-group', 'facebook_handler' );
+    register_setting( 'sunset-settings-group', 'gplus_handler' );
+
     add_settings_section( 'sunset-sidebar-options', //$id of the section
                           'Sidebar Options',        //$title of the section
                           'sunset_sidebar_options', //$callback function fills the section with the desired content
@@ -69,11 +71,16 @@
                         'guisopo_sunset',
                         'sunset-sidebar-options'
                       );
+    add_settings_field( 'sidebar-gplus',
+                        'Google+ handler',
+                        'sunset_sidebar_gplus', //we use another $callback
+                        'guisopo_sunset',
+                        'sunset-sidebar-options'
+                      );
   }
 
   //generation of our admin page
   function sunset_theme_create_page() {
-
     require_once( get_template_directory() . '/inc/templates/sunset-admin.php' );
   }
 
@@ -97,6 +104,11 @@
   function sunset_sidebar_facebook() {
     $twitter = esc_attr( get_option( 'facebook_handler'));
     echo '<input type="text" name="facebook_handler" value="'.$facebook.'" placeHolder="Facebook Handler" />';
+  }
+
+  function sunset_sidebar_gplus() {
+    $twitter = esc_attr( get_option( 'gplus_handler'));
+    echo '<input type="text" name="gplus_handler" value="'.$gplus.'" placeHolder="Google+ Handler" />';
   }
 
   //generation of our CSS page
