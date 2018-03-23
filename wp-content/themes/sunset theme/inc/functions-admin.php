@@ -102,12 +102,12 @@
   }
 
   function sunset_sidebar_facebook() {
-    $twitter = esc_attr( get_option( 'facebook_handler'));
+    $facebook = esc_attr( get_option( 'facebook_handler'));
     echo '<input type="text" name="facebook_handler" value="'.$facebook.'" placeHolder="Facebook Handler" />';
   }
 
   function sunset_sidebar_gplus() {
-    $twitter = esc_attr( get_option( 'gplus_handler'));
+    $gplus = esc_attr( get_option( 'gplus_handler'));
     echo '<input type="text" name="gplus_handler" value="'.$gplus.'" placeHolder="Google+ Handler" />';
   }
 
