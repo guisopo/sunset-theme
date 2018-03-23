@@ -42,6 +42,7 @@
   function sunset_custom_settings() {
     // Gives us the ability to create a specific section in the WP database to recorde a custom group of settings, fields, options, checkbox. Args ($option_group, $option_name)
     register_setting( 'sunset-settings-group', 'first_name' );
+    register_setting( 'sunset-settings-group', 'last_name' );
     add_settings_section( 'sunset-sidebar-options', //$id of the section
                           'Sidebar Options',        //$title of the section
                           'sunset_sidebar_options', //$callback function fills the section with the desired content
@@ -49,7 +50,7 @@
                         );
     // Use this to define a settings field that will show as part of a settings section inside a settings page.
     add_settings_field( 'sidebar-name',           //$id
-                        'First Name',             //$title
+                        'Full Name',             //$title
                         'sunset_sidebar_name',    //$callback
                         'guisopo_sunset',         //$page
                         'sunset-sidebar-options' //$section: slug of the section of the settings page in which to show the box.
@@ -68,8 +69,10 @@
 
   function sunset_sidebar_name() {
     $firstName = esc_attr( get_option( 'first_name') );
+    $lastName = esc_attr( get_option( 'last_name') );
     // Name of the input should be the same name of the settings that we register at the begining
-    echo '<input type="text" name="first_name" value="'.$firstName.'" placeHolder="First Name" />';
+    echo '<input type="text" name="first_name" value="'.$firstName.'" placeHolder="First Name" />
+          <input type="text" name="last_name" value="'.$lastName.'" placeHolder="Last Name" />';
   }
   //generation of our CSS page
   function sunset_theme_settings_page() {
