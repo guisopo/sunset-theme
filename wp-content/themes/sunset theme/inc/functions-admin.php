@@ -43,7 +43,7 @@
     // Gives us the ability to create a specific section in the WP database to recorde a custom group of settings, fields, options, checkbox. Args ($option_group, $option_name)
     register_setting( 'sunset-settings-group', 'first_name' );
     register_setting( 'sunset-settings-group', 'last_name' );
-    register_setting( 'sunset-settings-group', 'twitter_handler' );
+    register_setting( 'sunset-settings-group', 'twitter_handler', 'sunset_sanitize_twitter_handler' );
     register_setting( 'sunset-settings-group', 'facebook_handler' );
     register_setting( 'sunset-settings-group', 'gplus_handler' );
 
@@ -98,7 +98,8 @@
 
   function sunset_sidebar_twitter() {
     $twitter = esc_attr( get_option( 'twitter_handler'));
-    echo '<input type="text" name="twitter_handler" value="'.$twitter.'" placeHolder="Twitter Handler" />';
+    echo '<input type="text" name="twitter_handler" value="'.$twitter.'" placeHolder="Twitter Handler" />
+          <p class="description">Input yout user name without @ character.</p>';
   }
 
   function sunset_sidebar_facebook() {
@@ -109,6 +110,16 @@
   function sunset_sidebar_gplus() {
     $gplus = esc_attr( get_option( 'gplus_handler'));
     echo '<input type="text" name="gplus_handler" value="'.$gplus.'" placeHolder="Google+ Handler" />';
+  }
+
+  //Sanitization settings
+  // As an argument we include $input which will be whatever value the user inputs inside this field. WP will pass it automatically.
+  function sunset_sanitize_twitter_handler( $input ) {
+    // As a standard procesure we will use a prebuild WP function to sanitize a text field which checks for invalid UTF-8 and convert every special character into strip tags.
+    $output = sanitize_text_field( $input );
+    $output = str_replace( '@', '', $output);
+    //Always return, NEVER echo
+    return $output;
   }
 
   //generation of our CSS page
