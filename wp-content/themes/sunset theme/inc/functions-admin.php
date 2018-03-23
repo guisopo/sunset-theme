@@ -43,6 +43,7 @@
     // Gives us the ability to create a specific section in the WP database to recorde a custom group of settings, fields, options, checkbox. Args ($option_group, $option_name)
     register_setting( 'sunset-settings-group', 'first_name' );
     register_setting( 'sunset-settings-group', 'last_name' );
+    register_setting( 'sunset-settings-group', 'twitter_handler' );
     add_settings_section( 'sunset-sidebar-options', //$id of the section
                           'Sidebar Options',        //$title of the section
                           'sunset_sidebar_options', //$callback function fills the section with the desired content
@@ -54,6 +55,12 @@
                         'sunset_sidebar_name',    //$callback
                         'guisopo_sunset',         //$page
                         'sunset-sidebar-options' //$section: slug of the section of the settings page in which to show the box.
+                      );
+    add_settings_field( 'sidebar-twitter',
+                        'Twitter handler',
+                        'sunset_sidebar_twitter', //we use another $callback
+                        'guisopo_sunset',
+                        'sunset-sidebar-options'
                       );
   }
 
@@ -74,6 +81,12 @@
     echo '<input type="text" name="first_name" value="'.$firstName.'" placeHolder="First Name" />
           <input type="text" name="last_name" value="'.$lastName.'" placeHolder="Last Name" />';
   }
+
+  function sunset_sidebar_twitter() {
+    $twitter = esc_attr( get_option( 'twitter_handler'));
+    echo '<input type="text" name="twitter_handler" value="'.$twitter.'" placeHolder="Twitter Handler" />';
+  }
+
   //generation of our CSS page
   function sunset_theme_settings_page() {
 
