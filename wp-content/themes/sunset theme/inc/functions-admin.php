@@ -126,4 +126,32 @@
   function sunset_theme_settings_page() {
 
   }
+
+  // 
+  // / The settings field callback function - First name
+  // function sunset_sidebar_name() {
+  //  $options = get_option('input_fields');
+  //
+  //  if ( !isset($options['first_name']) ) $options['first_name'] = '';
+  //
+  //  echo '<input type="text" class="regular-text" id="first_name" name="input_fields[first_name]" value="'. $options['first_name']. '" placeholder="First Name">';
+  // }
+  //
+  // // The settings fields callback function - Last name
+  // function sunset_sidebar_last_name() {
+  //  $options = get_option('input_fields');
+  //
+  //  if( !isset ($options['last_name']) ) $options['last_name'] = '';
+  //
+  //  echo '<input type="text" class="regular-text" id="last_name" name="input_fields[last_name]" value="' .$options['last_name']. '" placeholder="Last Name">';
+  // }
+  //
+  // // The settings fields callback function - Email
+  // function sunset_sidebar_email() {
+  //  $options = get_option('input_fields');
+  //
+  //  if( !isset($options['email_address']) ) $options['email_address'] = '';
+  //
+  //  echo '<input type="email" class="regular-text" id="email_address" name="input_fields[email_address]" value="'.$options['email_address'].'" placeholder="Your E-mail Address">';
+  // }
 ?>
