@@ -12,5 +12,7 @@
     wp_enqueue_style( 'sunset_admin');
   }
 
+  add_action( 'admin_enqueue_scripts', 'sunset_load_admin_scripts');
+
 
 ?>
