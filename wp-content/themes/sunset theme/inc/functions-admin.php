@@ -43,6 +43,7 @@
     // Gives us the ability to create a specific section in the WP database to recorde a custom group of settings, fields, options, checkbox. Args ($option_group, $option_name)
     register_setting( 'sunset-settings-group', 'first_name' );
     register_setting( 'sunset-settings-group', 'last_name' );
+    register_setting( 'sunset-settings-group', 'user_description' );
     register_setting( 'sunset-settings-group', 'twitter_handler', 'sunset_sanitize_twitter_handler' );
     register_setting( 'sunset-settings-group', 'facebook_handler' );
     register_setting( 'sunset-settings-group', 'gplus_handler' );
@@ -58,6 +59,12 @@
                         'sunset_sidebar_name',    //$callback
                         'guisopo_sunset',         //$page
                         'sunset-sidebar-options' //$section: slug of the section of the settings page in which to show the box.
+                      );
+    add_settings_field( 'sidebar-description',
+                        'Description',
+                        'sunset_sidebar_description', //we use another $callback
+                        'guisopo_sunset',
+                        'sunset-sidebar-options'
                       );
     add_settings_field( 'sidebar-twitter',
                         'Twitter handler',
@@ -96,6 +103,12 @@
           <input type="text" name="last_name" value="'.$lastName.'" placeHolder="Last Name" />';
   }
 
+  function sunset_sidebar_description() {
+    $description = esc_attr( get_option( 'user_description'));
+    echo '<input type="text" name="user_description" value="'.$description.'" placeHolder="Description Handler" />
+          <p class="description">Write something smart.</p>';
+  }
+
   function sunset_sidebar_twitter() {
     $twitter = esc_attr( get_option( 'twitter_handler'));
     echo '<input type="text" name="twitter_handler" value="'.$twitter.'" placeHolder="Twitter Handler" />
@@ -127,7 +140,7 @@
 
   }
 
-  // 
+  //
   // / The settings field callback function - First name
   // function sunset_sidebar_name() {
   //  $options = get_option('input_fields');
