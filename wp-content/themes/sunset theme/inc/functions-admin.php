@@ -41,6 +41,7 @@
 
   function sunset_custom_settings() {
     // Gives us the ability to create a specific section in the WP database to recorde a custom group of settings, fields, options, checkbox. Args ($option_group, $option_name)
+    register_setting( 'sunset-settings-group', 'profile_picture' );
     register_setting( 'sunset-settings-group', 'first_name' );
     register_setting( 'sunset-settings-group', 'last_name' );
     register_setting( 'sunset-settings-group', 'user_description' );
@@ -54,11 +55,17 @@
                           'guisopo_sunset'          //$page where settings are printed
                         );
     // Use this to define a settings field that will show as part of a settings section inside a settings page.
-    add_settings_field( 'sidebar-name',           //$id
-                        'Full Name',             //$title
-                        'sunset_sidebar_name',    //$callback
+    add_settings_field( 'sidebar-profile-picture',//$id
+                        'Profile Picture',        //$title
+                        'sunset_sidebar_picture', //$callback
                         'guisopo_sunset',         //$page
-                        'sunset-sidebar-options' //$section: slug of the section of the settings page in which to show the box.
+                        'sunset-sidebar-options'  //$section: slug of the section of the settings page in which to show the box.
+                      );
+    add_settings_field( 'sidebar-name',
+                        'Full Name',
+                        'sunset_sidebar_name',
+                        'guisopo_sunset',
+                        'sunset-sidebar-options'
                       );
     add_settings_field( 'sidebar-description',
                         'Description',
@@ -93,6 +100,13 @@
 
   function sunset_sidebar_options() {
     echo 'Customise your sidebar';
+  }
+
+  function sunset_sidebar_picture() {
+    $picture = esc_attr( get_option( 'profile_picture') );
+    // Name of the input should be the same name of the settings that we register at the begining
+    echo '<input type="button" name="Upload Profile Picture" id="upload-button"/>
+          <input type="hidden" name="profile_picture" value="'.$picture.'"/>';
   }
 
   function sunset_sidebar_name() {
