@@ -105,7 +105,7 @@
   function sunset_sidebar_picture() {
     $picture = esc_attr( get_option( 'profile_picture') );
     // Name of the input should be the same name of the settings that we register at the begining
-    echo '<input type="button" name="Upload Profile Picture" id="upload-button"/>
+    echo '<input type="button" class="button button-secondary" value="Upload Profile Picture" id="upload-button"/>
           <input type="hidden" name="profile_picture" value="'.$picture.'"/>';
   }
 
