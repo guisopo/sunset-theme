@@ -9,7 +9,7 @@ jQuery(document).ready(function($){
       // we return to avoid the script to continue
       return;
     }
-    console.log('hola');
+
     mediaUploader = wp.media.frames.file_frame = wp.media({
       title: 'Upload Profile Picture',
       button: {
@@ -17,6 +17,13 @@ jQuery(document).ready(function($){
       },
       multiple: false
     });
+
+    mediaUploader.on('select', function() {
+      attachment = mediaUploader.state.get('selection').first().toJSON();
+      $('#profile-picture').val(attachment.url);
+    });
+
+    mediaUploader.open();
 
 
   });
