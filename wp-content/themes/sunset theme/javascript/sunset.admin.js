@@ -3,7 +3,7 @@ jQuery(document).ready(function($){
   var mediaUploader;
 
   $('#upload-button').on('click', function(e) {
-    // e.preventDefault();
+    e.preventDefault();
     if( mediaUploader ) {
       mediaUploader.open();
       // we return to avoid the script to continue
@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
     });
 
     mediaUploader.on('select', function() {
-      attachment = mediaUploader.state.get('selection').first().toJSON();
+      attachment = mediaUploader.state().get('selection').first().toJSON();
       $('#profile-picture').val(attachment.url);
     });
 
