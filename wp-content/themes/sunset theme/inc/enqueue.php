@@ -17,7 +17,7 @@
 
     wp_enqueue_media();
 
-    wp_register_script( 'sunset-admin-script', get_template_directory_uri() . '/js/sunset.admin.js', array('jquery'), '1.0.0', true );
+    wp_register_script( 'sunset-admin-script', get_template_directory_uri() . '/javascript/sunset.admin.js', array('jquery'), '1.0.0', true );
     wp_enqueue_script( 'sunset-admin-script');
   }
 
