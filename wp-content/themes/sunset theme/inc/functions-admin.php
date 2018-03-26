@@ -164,7 +164,15 @@
   }
 
   function sunset_post_formats() {
-
+    $options = get_option('post_formats');
+    $formats = array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat');
+    $output = '';
+    foreach ($formats as $format) {
+      // checks if an array-key exists and is not null
+      $checked = (isset($options[$format]) && $options[$format] == 1 ? "checked" : "");
+      $output .= '<label><input type="checkbox" id="'.$format.'" name="post_formats['.$format.']" value="1" '.$checked.'>'.$format.'</label><br>';
+    }
+    echo $output;
   }
 
   //SANITAZING SETTINGS
@@ -190,14 +198,9 @@
     require_once( get_template_directory() . '/inc/templates/sunset-theme-support.php' );
   }
 
+  //generation of our CSS page
   function sunset_theme_settings_page() {
-    $formats = array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat');
-    $output = '';
-    foreach ($formats as $format) {
-      $output .= '<label><input type="checkbox" id="'.$format.'" name="'.$format.'" value="1">
-                    '.$format.'</label><br>';
-    }
-    return $output;
+
   }
 
   //
