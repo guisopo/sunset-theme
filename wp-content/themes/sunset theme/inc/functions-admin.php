@@ -19,8 +19,8 @@
                   );
     // Generate Sunset Admin Subpages
     add_submenu_page( 'guisopo_sunset',              // $parent_slug
-                      'Sunset Theme Options',        // $page_title: same as the parent
-                      'General',                     // $menu_title
+                      'Sunset Sidebar Options',        // $page_title: same as the parent
+                      'Sidebar',                     // $menu_title
                       'manage_options',              // $capability
                       'guisopo_sunset',              // $menu_slug: same as the parent
                       'sunset_theme_create_page'     // $function fills the section with the desired content
