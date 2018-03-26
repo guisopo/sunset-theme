@@ -106,11 +106,19 @@
     add_settings_section( 'sunset-theme-options',
                           'Theme Options',
                           'sunset_theme_options',
-                          'guisopo_sunset_theme'
+                          'guisopo_sunset_theme',
+                          'sunset-theme-support'
                         );
+
+    add_settings_field( 'post-formats',
+                        'Post Formats',
+                        'sunset_post_formats',
+                        'guisopo_sunset_theme',
+                        'sunset-theme-options'
+                      );
   }
 
-  // SIDEBAR CALLBACK FUNCTIONS
+  // SIDEBAR OPTIONS FUNCTIONS
   function sunset_sidebar_options() {
     echo 'Customise your sidebar';
   }
@@ -152,9 +160,9 @@
     echo '<input type="text" name="gplus_handler" value="'.$gplus.'" placeHolder="Google+ Handler" />';
   }
 
-  // THEME SUPPORT CALLBACK FUNCTIONS
+  // THEME SUPPORT OPTIONS FUNCTIONS
   function sunset_theme_options() {
-    
+    echo 'Activate and Deactivate specific theme support options';
   }
 
   //SANITAZING SETTINGS
