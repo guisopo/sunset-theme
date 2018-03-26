@@ -163,13 +163,17 @@
     echo 'Activate and Deactivate specific theme support options';
   }
 
+  function sunset_post_formats_callback($input) {
+    return $input;
+  }
+
   function sunset_post_formats() {
     $options = get_option('post_formats');
     $formats = array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat');
     $output = '';
     foreach ($formats as $format) {
       // checks if an array-key exists and is not null
-      $checked = (isset($options[$format]) && $options[$format] == 1 ? "checked" : "");
+      $checked = (isset($options[$format]) && $options[$format] == 1 ? "checked" : '');
       $output .= '<label><input type="checkbox" id="'.$format.'" name="post_formats['.$format.']" value="1" '.$checked.'>'.$format.'</label><br>';
     }
     echo $output;
@@ -184,10 +188,6 @@
     return $output;
   }
 
-  // POST FORMAT CALLBACK
-  function sunset_post_formats_callback($input) {
-    return $input;
-  }
 
   //TEMPLATE SUBMENU FUNCTIONS
   function sunset_theme_create_page() {
