@@ -32,6 +32,13 @@
                       'guisopo_sunset_css',
                       'sunset_theme_settings_page'
                     );
+    add_submenu_page( 'guisopo_sunset',
+                      'Sunset Theme Options',
+                      'Theme Options',
+                      'manage_options',
+                      'guisopo_sunset_theme',
+                      'sunset_theme_support_page'
+                    );
 
     //Activate Custom Settings: we write this action inside this function to prevent the system generate the custom settings if we are not creating the page, if the system is not starting properly.
     add_action( 'admin_init', 'sunset_custom_settings');
@@ -93,11 +100,6 @@
                       );
   }
 
-  //generation of our admin page
-  function sunset_theme_create_page() {
-    require_once( get_template_directory() . '/inc/templates/sunset-admin.php' );
-  }
-
   function sunset_sidebar_options() {
     echo 'Customise your sidebar';
   }
@@ -147,6 +149,16 @@
     $output = str_replace( '@', '', $output);
     //Always return, NEVER echo
     return $output;
+  }
+
+  //Template submenu function
+  //generation of our admin page
+  function sunset_theme_create_page() {
+    require_once( get_template_directory() . '/inc/templates/sunset-admin.php' );
+  }
+
+  function sunset_theme_support_page() {
+    require_once( get_template_directory() . '/inc/templates/sunset-theme-support.php' );
   }
 
   //generation of our CSS page
