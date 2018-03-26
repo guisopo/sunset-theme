@@ -40,7 +40,7 @@
                       'sunset_theme_settings_page'
                     );
 
-    //Activate Custom Settings: we write this action inside this function to prevent the system generate the custom settings if we are not creating the page, if the system is not starting properly.
+    //ACTIVATE CUSTOM SETTINGS: we write this action inside this function to prevent the system generate the custom settings if we are not creating the page, if the system is not starting properly.
     add_action( 'admin_init', 'sunset_custom_settings');
   }
 
@@ -141,7 +141,7 @@
     echo '<input type="text" name="gplus_handler" value="'.$gplus.'" placeHolder="Google+ Handler" />';
   }
 
-  //Sanitization settings
+  //SANITAZING SETTINGS
   // As an argument we include $input which will be whatever value the user inputs inside this field. WP will pass it automatically.
   function sunset_sanitize_twitter_handler( $input ) {
     // As a standard procesure we will use a prebuild WP function to sanitize a text field which checks for invalid UTF-8 and convert every special character into strip tags.
@@ -151,7 +151,7 @@
     return $output;
   }
 
-  //Template submenu function
+  //TEMPLATE SUBMENU FUNCTIONS
   //generation of our admin page
   function sunset_theme_create_page() {
     require_once( get_template_directory() . '/inc/templates/sunset-admin.php' );
