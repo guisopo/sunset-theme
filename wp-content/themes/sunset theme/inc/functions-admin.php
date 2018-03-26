@@ -19,7 +19,7 @@
                   );
     // Generate Sunset Admin Subpages
     add_submenu_page( 'guisopo_sunset',              // $parent_slug
-                      'Sunset Sidebar Options',        // $page_title: same as the parent
+                      'Sunset Sidebar Options',      // $page_title: same as the parent
                       'Sidebar',                     // $menu_title
                       'manage_options',              // $capability
                       'guisopo_sunset',              // $menu_slug: same as the parent
@@ -47,6 +47,7 @@
   add_action( 'admin_menu', 'sunset_add_admin_page' );
 
   function sunset_custom_settings() {
+    //SIDEBAR OPTIONS
     // Gives us the ability to create a specific section in the WP database to recorde a custom group of settings, fields, options, checkbox. Args ($option_group, $option_name)
     register_setting( 'sunset-settings-group', 'profile_picture' );
     register_setting( 'sunset-settings-group', 'first_name' );
@@ -98,6 +99,9 @@
                         'guisopo_sunset',
                         'sunset-sidebar-options'
                       );
+
+    //THEME SUPPORT OPTIONS
+    register_setting( 'sunset-theme-support', 'post_formats', 'sunset_post_formats_callback' );
   }
 
   function sunset_sidebar_options() {
