@@ -151,6 +151,10 @@
     echo '<input type="text" name="gplus_handler" value="'.$gplus.'" placeHolder="Google+ Handler" />';
   }
 
+  function sunset_theme_options() {
+    
+  }
+
   //SANITAZING SETTINGS
   // As an argument we include $input which will be whatever value the user inputs inside this field. WP will pass it automatically.
   function sunset_sanitize_twitter_handler( $input ) {
