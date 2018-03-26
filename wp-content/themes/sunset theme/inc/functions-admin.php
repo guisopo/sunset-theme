@@ -26,18 +26,18 @@
                       'sunset_theme_create_page'     // $function fills the section with the desired content
                     );
     add_submenu_page( 'guisopo_sunset',
-                      'Sunset CSS Options',
-                      'Custom CSS',
-                      'manage_options',
-                      'guisopo_sunset_css',
-                      'sunset_theme_settings_page'
-                    );
-    add_submenu_page( 'guisopo_sunset',
                       'Sunset Theme Options',
                       'Theme Options',
                       'manage_options',
                       'guisopo_sunset_theme',
                       'sunset_theme_support_page'
+                    );
+    add_submenu_page( 'guisopo_sunset',
+                      'Sunset CSS Options',
+                      'Custom CSS',
+                      'manage_options',
+                      'guisopo_sunset_css',
+                      'sunset_theme_settings_page'
                     );
 
     //Activate Custom Settings: we write this action inside this function to prevent the system generate the custom settings if we are not creating the page, if the system is not starting properly.
