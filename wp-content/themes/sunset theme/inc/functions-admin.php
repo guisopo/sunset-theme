@@ -155,6 +155,11 @@
     return $output;
   }
 
+  // POST FORMAT CALLBACK
+  function sunset_post_formats_callback($input) {
+    return $input;
+  }
+
   //TEMPLATE SUBMENU FUNCTIONS
   //generation of our admin page
   function sunset_theme_create_page() {
