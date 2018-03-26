@@ -110,6 +110,7 @@
                         );
   }
 
+  // SIDEBAR CALLBACK FUNCTIONS
   function sunset_sidebar_options() {
     echo 'Customise your sidebar';
   }
@@ -151,6 +152,7 @@
     echo '<input type="text" name="gplus_handler" value="'.$gplus.'" placeHolder="Google+ Handler" />';
   }
 
+  // THEME SUPPORT CALLBACK FUNCTIONS
   function sunset_theme_options() {
     
   }
