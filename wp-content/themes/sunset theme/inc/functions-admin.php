@@ -102,6 +102,12 @@
 
     //THEME SUPPORT OPTIONS
     register_setting( 'sunset-theme-support', 'post_formats', 'sunset_post_formats_callback' );
+
+    add_settings_section( 'sunset-theme-options',
+                          'Theme Options',
+                          'sunset_theme_options',
+                          'guisopo_sunset_theme'
+                        );
   }
 
   function sunset_sidebar_options() {
