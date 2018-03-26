@@ -15,6 +15,7 @@
     wp_register_style( 'sunset_admin', get_template_directory_uri() . '/css/sunset.admin.css', array(), '1.0.0', 'all' );
     wp_enqueue_style( 'sunset_admin');
 
+    // Enqueues all scripts, styles, settings, and templates necessary to use all media JavaScript APIs
     wp_enqueue_media();
 
     wp_register_script( 'sunset-admin-script', get_template_directory_uri() . '/javascript/sunset.admin.js', array('jquery'), '1.0.0', true );
