@@ -100,7 +100,9 @@
                       );
 
     //THEME SUPPORT OPTIONS
-    register_setting( 'sunset-theme-support', 'post_formats', 'sunset_post_formats_callback' );
+    register_setting( 'sunset-theme-support', 'post_formats' );
+    register_setting( 'sunset-theme-support', 'custom_header' );
+    register_setting( 'sunset-theme-support', 'custom_background' );
 
     add_settings_section( 'sunset-theme-options',
                           'Theme Options',
@@ -115,6 +117,18 @@
                         'guisopo_sunset_theme',
                         'sunset-theme-options'
                       );
+    add_settings_field( 'custom-header',
+                        'Custom Header',
+                        'sunset_custom_header',
+                        'guisopo_sunset_theme',
+                        'sunset-theme-options'
+                      );
+    add_settings_field( 'custom-background',
+                        'Custom Background',
+                        'sunset_custom_background',
+                        'guisopo_sunset_theme',
+                        'sunset-theme-options'
+                      );
   }
 
   // SIDEBAR OPTIONS FUNCTIONS
@@ -124,9 +138,17 @@
 
   function sunset_sidebar_picture() {
     $picture = esc_attr( get_option( 'profile_picture') );
-    // Name of the input should be the same name of the settings that we register at the begining
-    echo '<input type="button" class="button button-secondary" value="Upload Profile Picture" id="upload-button"/>
-          <input type="hidden" id="profile-picture" name="profile_picture" value="'.$picture.'"/>';
+    if(empty($picture)) {
+      // Name of the input should be the same name of the settings that we register at the begining
+      echo '<input type="button" class="button button-secondary" value="Upload Profile Picture" id="upload-button"/>
+            <input type="hidden" id="profile-picture" name="profile_picture" value=""/>';
+    } else {
+      // When we create a button its gonna have by default a type of submit automatically. We can change that changing the type attribute to button or creating and input with the type of button
+      echo '<input type="button" class="button button-secondary" value="Replace Profile Picture" id="upload-button"/>
+            <input type="hidden" id="profile-picture" name="profile_picture" value="'.$picture.'"/>
+            <input type="button" class="button button-secondary" value="Remove" id="remove-picture"/>';
+    }
+
   }
 
   function sunset_sidebar_name() {
@@ -159,9 +181,6 @@
   }
 
   // THEME SUPPORT OPTIONS FUNCTIONS
-  function sunset_theme_options() {
-    echo 'Activate and Deactivate specific theme support options';
-  }
 
   function sunset_post_formats_callback($input) {
     return $input;
@@ -177,6 +196,18 @@
       $output .= '<label><input type="checkbox" id="'.$format.'" name="post_formats['.$format.']" value="1" '.$checked.'>'.$format.'</label><br>';
     }
     echo $output;
+  }
+
+  function sunset_custom_header() {
+    $option = get_option( 'custom_header' );
+    $checked = (isset($options) == 1 ? "checked" : '');
+    echo '<label><input type="checkbox" id="custom_header" name="custom_header" value="1" '.$checked.'>Activate the Custom Header</label>';
+  }
+
+  function sunset_custom_background() {
+    $option = get_option( 'custom_background' );
+    $checked = (isset($options) == 1 ? "checked" : '');
+    echo '<label><input type="checkbox" id="custom_background" name="custom_background" value="1" '.$checked.'>Activate the Custom Background</label>';
   }
 
   //SANITAZING SETTINGS
@@ -202,6 +233,22 @@
   function sunset_theme_settings_page() {
 
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   //
   // / The settings field callback function - First name

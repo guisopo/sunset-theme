@@ -23,8 +23,8 @@
 </div>
 
 <!-- Method will always be post -->
-<form method="post" action="options.php">
+<form method="post" action="options.php" class="sunset-general-form">
   <?php settings_fields( 'sunset-settings-group' ); ?>
   <?php do_settings_sections( 'guisopo_sunset' ); ?>
-  <?php submit_button(); ?>
+  <?php submit_button('Save Changes', 'primary', 'btnSubmit'); ?>
 </form>
