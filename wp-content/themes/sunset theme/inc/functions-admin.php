@@ -33,6 +33,13 @@
                       'sunset_theme_support_page'
                     );
     add_submenu_page( 'guisopo_sunset',
+                      'Sunset Contact Form',
+                      'Contact Form',
+                      'manage_options',
+                      'guisopo_sunset_theme_contact',
+                      'sunset_contact_form_page'
+                    );
+    add_submenu_page( 'guisopo_sunset',
                       'Sunset CSS Options',
                       'Custom CSS',
                       'manage_options',
@@ -128,9 +135,28 @@
                         'guisopo_sunset_theme',
                         'sunset-theme-options'
                       );
+
+    //CONTACT FORM OPTIONS
+    register_setting( 'sunset-contact-form', 'activate_contact');
+
+    add_settings_section( 'sunset-contact-section',
+                          'Contact Form',
+                          'sunset_contact_section',
+                          'guisopo_sunset_theme_contact'
+                        );
+
+    add_settings_field( 'activate-form',
+                        'Activate Contact Form',
+                        'sunset_activate_contact',
+                        'guisopo_sunset_theme_contact',
+                        'sunset-contact-section'
+                      );
+
   }
 
-  // SIDEBAR OPTIONS FUNCTIONS
+   //==========================
+  // SIDEBAR OPTIONS CALLBACKS
+
   function sunset_sidebar_options() {
     echo 'Customise your sidebar';
   }
@@ -179,7 +205,8 @@
     echo '<input type="text" name="gplus_handler" value="'.$gplus.'" placeHolder="Google+ Handler" />';
   }
 
-  // THEME SUPPORT OPTIONS FUNCTIONS
+   //================================
+  // THEME SUPPORT OPTIONS CALLBACKS
 
   function sunset_theme_options() {
 	   echo 'Activate and Deactivate specific Theme Support Options';
@@ -199,7 +226,7 @@
 
   function sunset_custom_header() {
     $options = get_option( 'custom_header' );
-    $checked = ( @$options == 1 ? 'checked' : '' );
+    $checked = ( isset($options) == 1 ? 'checked' : '' );
     echo '<label><input type="checkbox" id="custom_header" name="custom_header" value="1" '.$checked.' />Activate the Custom Header</label>';
   }
 
@@ -209,8 +236,21 @@
     echo '<label><input type="checkbox" id="custom_background" name="custom_background" value="1" '.$checked.' />Activate the Custom Background</label>';
   }
 
+   //======================
+  //CONTACT FORM CALLBACKS
+
+  function sunset_contact_section() {
+    echo 'Activate and Deactivate the Built-in Contact Form';
+  }
+
+  function sunset_activate_contact() {
+    $options = get_option( 'activate_contact' );
+    $checked = ( $options == 1 ? 'checked' : '' );
+    echo '<input type="checkbox" id="activate_contact" name="activate_contact" value="1" '.$checked.' />';
+  }
+
+   //===================
   //SANITAZING SETTINGS
-  // As an argument we include $input which will be whatever value the user inputs inside this field. WP will pass it automatically.
   function sunset_sanitize_twitter_handler( $input ) {
     $output = sanitize_text_field( $input );
     $output = str_replace( '@', '', $output);
@@ -218,7 +258,7 @@
     return $output;
   }
 
-
+   //==========================
   //TEMPLATE SUBMENU FUNCTIONS
   function sunset_theme_create_page() {
     require_once( get_template_directory() . '/inc/templates/sunset-admin.php' );
@@ -228,9 +268,12 @@
     require_once( get_template_directory() . '/inc/templates/sunset-theme-support.php' );
   }
 
-  //generation of our CSS page
-  function sunset_theme_settings_page() {
+  function sunset_contact_form_page() {
+    require_once( get_template_directory() . '/inc/templates/sunset-contact-form.php' );
+  }
 
+  function sunset_theme_settings_page() {
+    echo '<h1>Sunset Custom Styles</h1>';
   }
 
 
