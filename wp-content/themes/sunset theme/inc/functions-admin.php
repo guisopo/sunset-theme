@@ -107,8 +107,7 @@
     add_settings_section( 'sunset-theme-options',
                           'Theme Options',
                           'sunset_theme_options',
-                          'guisopo_sunset_theme',
-                          'sunset-theme-support'
+                          'guisopo_sunset_theme'
                         );
 
     add_settings_field( 'post-formats',
@@ -182,8 +181,8 @@
 
   // THEME SUPPORT OPTIONS FUNCTIONS
 
-  function sunset_post_formats_callback($input) {
-    return $input;
+  function sunset_theme_options() {
+	   echo 'Activate and Deactivate specific Theme Support Options';
   }
 
   function sunset_post_formats() {
@@ -199,15 +198,15 @@
   }
 
   function sunset_custom_header() {
-    $option = get_option( 'custom_header' );
-    $checked = (isset($options) == 1 ? "checked" : '');
-    echo '<label><input type="checkbox" id="custom_header" name="custom_header" value="1" '.$checked.'>Activate the Custom Header</label>';
+    $options = get_option( 'custom_header' );
+    $checked = ( @$options == 1 ? 'checked' : '' );
+    echo '<label><input type="checkbox" id="custom_header" name="custom_header" value="1" '.$checked.' />Activate the Custom Header</label>';
   }
 
   function sunset_custom_background() {
-    $option = get_option( 'custom_background' );
+    $options = get_option( 'custom_background' );
     $checked = (isset($options) == 1 ? "checked" : '');
-    echo '<label><input type="checkbox" id="custom_background" name="custom_background" value="1" '.$checked.'>Activate the Custom Background</label>';
+    echo '<label><input type="checkbox" id="custom_background" name="custom_background" value="1" '.$checked.' />Activate the Custom Background</label>';
   }
 
   //SANITAZING SETTINGS
