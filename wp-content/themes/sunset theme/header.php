@@ -11,6 +11,8 @@
 <!DOCTYPE html>
 <html <?php language_attributes() ?> dir="ltr">
   <head>
+    <title><?php bloginfo('name'); wp_title(); ?></title>
+    <meta name="description" content="<?php bloginfo( 'description' ) ?>">
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, intial-scale=1">
     <link rel="profile" href="http://gmpg.org/xfn/11">
@@ -24,3 +26,30 @@
   </head>
 
   <body <?php body_class(); ?>>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <!-- Beacuse we can NOT call the custom BG header we have to call it here -->
+          <div class="header-container background-image  text-center" style="background-image: url(<?php header_image() ?>)">
+
+            <div class="header-content">
+              <div class="header-content-wrapper">
+                <h1 class="site-title sunset-icon">
+                  <span class="sunset-logo"></span>
+                  <span class="hide"><?php bloginfo( 'name' ); ?></span>
+                </h1>
+                <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+              </div>
+            </div>
+
+            <div class="nav-container">
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
