@@ -226,13 +226,14 @@
 
   function sunset_custom_header() {
     $options = get_option( 'custom_header' );
-    $checked = ( isset($options) == 1 ? 'checked' : '' );
+    $checked = ( $options == 1 ? 'checked' : '' );
     echo '<label><input type="checkbox" id="custom_header" name="custom_header" value="1" '.$checked.' />Activate the Custom Header</label>';
   }
 
+
   function sunset_custom_background() {
     $options = get_option( 'custom_background' );
-    $checked = (isset($options) == 1 ? "checked" : '');
+    $checked = ($options == 1 ? "checked" : '');
     echo '<label><input type="checkbox" id="custom_background" name="custom_background" value="1" '.$checked.' />Activate the Custom Background</label>';
   }
 
