@@ -7,6 +7,8 @@
   ======================================
 */
 
+
+/* remove version string from js and css */
 function sunset_remove_wp_version_strings( $src ) {
   //calling global before a variable we will be able to access whatever global variable WP defines before the generation of the frontend.
   global $wp_version;
@@ -24,6 +26,8 @@ function sunset_remove_wp_version_strings( $src ) {
 add_filter( 'script_loader_src', 'sunset_remove_wp_version_strings' );
 add_filter( 'style_loader_src', 'sunset_remove_wp_version_strings' );
 
+
+/* remove metatag generator from header */
 function sunset_remove_meta_version() {
   return '';
 }
