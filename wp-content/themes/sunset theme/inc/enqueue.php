@@ -36,7 +36,7 @@
     wp_enqueue_style( 'sunset', get_template_directory_uri() . '/css/sunset.css', array(), '1.0.0',  'all' );
 
     wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', get_template_directory_uri() . '/javascript/jquery..js', array(), '1.11.3', 'true' );
+    wp_register_script( 'jquery', get_template_directory_uri() . '/javascript/jquery.js', array(), '1.11.3', 'true' );
     wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '3.3.7',  true );
 
