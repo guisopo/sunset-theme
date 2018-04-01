@@ -32,7 +32,7 @@
         <div class="col-xs-12">
 
           <!-- Beacuse we can NOT call the custom BG header we have to call it here -->
-          <div class="header-container background-image  text-center" style="background-image: url(<?php header_image() ?>)">
+          <header class="header-container background-image  text-center" style="background-image: url(<?php header_image() ?>)">
 
             <div class="header-content">
               <div class="header-content-wrapper">
@@ -46,9 +46,19 @@
 
             <div class="nav-container">
 
+              <nav class="navbar navbar-default navbar-sunset">
+                <?php
+                  wp_nav_menu( array(
+                    'theme_location' => 'primary',
+                    'container' => false,
+                    'menu_class' => 'nav navbar-nav'
+                  ) );
+                ?>
+              </nav>
+
             </div>
 
-          </div>
+          </header>
 
         </div>
       </div>

@@ -165,13 +165,13 @@
     $picture = esc_attr( get_option( 'profile_picture') );
     if(empty($picture)) {
       // Name of the input should be the same name of the settings that we register at the begining
-      echo '<input type="button" class="button button-secondary" value="Upload Profile Picture" id="upload-button"/>
+      echo '<button type="button" class="button button-secondary" value="Upload Profile Picture" id="upload-button"/>Upload Profile Picture<span class="sunset-icon-button dashicons-before dashicons-format-image"></span></button>
             <input type="hidden" id="profile-picture" name="profile_picture" value=""/>';
     } else {
       // When we create a button its gonna have by default a type of submit automatically. We can change that changing the type attribute to button or creating and input with the type of button
-      echo '<input type="button" class="button button-secondary" value="Replace Profile Picture" id="upload-button"/>
+      echo '<button type="button" class="button button-secondary" value="Replace Profile Picture" id="upload-button">Replace Profile Picture<span class="sunset-icon-button dashicons-before dashicons-format-image"></span></button>
             <input type="hidden" id="profile-picture" name="profile_picture" value="'.$picture.'"/>
-            <input type="button" class="button button-secondary" value="Remove" id="remove-picture"/>';
+            <button type="button" class="button button-secondary" value="Remove" id="remove-picture">Remove<span class="sunset-icon-button dashicons-before dashicons-no"></span></button>';
     }
 
   }
