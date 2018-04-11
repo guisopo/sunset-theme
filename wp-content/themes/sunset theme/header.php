@@ -1,65 +1,84 @@
 <?php
 
-  /*
-    This is the tempalte for the header
+	/*
+		This is the template for the hedaer
 
-    @package sunsettheme
-  */
+		@package sunsettheme
+	*/
 
 ?>
-
 <!DOCTYPE html>
-<html <?php language_attributes() ?> dir="ltr">
-  <head>
-    <title><?php bloginfo('name'); wp_title(); ?></title>
-    <meta name="description" content="<?php bloginfo( 'description' ) ?>">
-    <meta charset="<?php bloginfo( 'charset' ); ?>">
-    <meta name="viewport" content="width=device-width, intial-scale=1">
-    <link rel="profile" href="http://gmpg.org/xfn/11">
+<html <?php language_attributes(); ?>>
+	<head>
+		<title><?php bloginfo( 'name' ); wp_title(); ?></title>
+		<meta name="description" content="<?php bloginfo( 'description' ); ?>">
+		<meta charset="<?php bloginfo( 'charset' ); ?>">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		<?php if( is_singular() && pings_open( get_queried_object() ) ): ?>
+			<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+		<?php endif; ?>
+		<?php wp_head(); ?>
 
-    <!-- We wanna hidde this section in the case the page is not a single post, page or in case the pingback has been deactivated from the backend. -->
-    <?php if( is_singular() && pings_open( get_queried_object() ) ) : ?>
-      <link rel="pingback" href="<?php bloginfo( 'ping_back_url' ); ?>">
-    <?php endif; ?>
+		<?php
+			$custom_css = esc_attr( get_option( 'sunset_css' ) );
+			if( !empty( $custom_css ) ):
+				echo '<style>' . $custom_css . '</style>';
+			endif;
+		?>
 
-    <?php wp_head(); ?>
-  </head>
+	</head>
 
-  <body <?php body_class(); ?>>
+<body <?php body_class(); ?>>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
+	<div class="container">
 
-          <!-- Beacuse we can NOT call the custom BG header we have to call it here -->
-          <header class="header-container background-image  text-center" style="background-image: url(<?php header_image() ?>)">
+		<div class="row">
+			<div class="col-xs-12">
 
-            <div class="header-content">
-              <div class="header-content-wrapper">
-                <h1 class="site-title sunset-icon">
-                  <span class="sunset-logo"></span>
-                  <span class="hide"><?php bloginfo( 'name' ); ?></span>
-                </h1>
-                <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-              </div>
-            </div>
+				<header class="header-container background-image text-center" style="background-image: url(<?php header_image(); ?>);">
 
-            <div class="nav-container">
+					<div class="header-content table">
+						<div class="table-cell">
+							<h1 class="site-title sunset-icon">
+								<span class="sunset-logo"></span>
+								<span class="hide"><?php bloginfo( 'name' ); ?></span>
+							</h1>
+							<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+						</div><!-- .table-cell -->
+					</div><!-- .header-content -->
 
-              <nav class="navbar navbar-default navbar-sunset">
-                <?php
-                  wp_nav_menu( array(
-                    'theme_location' => 'primary',
-                    'container' => false,
-                    'menu_class' => 'nav navbar-nav'
-                  ) );
-                ?>
-              </nav>
+					<div class="nav-container">
 
-            </div>
+						<nav class="navbar navbar-deafult navbar-sunset">
+							<?php
+								wp_nav_menu( array(
+									'theme_location' => 'primary',
+									'container' => false,
+									'menu_class' => 'nav navbar-nav',
+									'walker' => new Sunset_Walker_Nav_Primary()
+								) );
+							?>
+						</nav>
 
-          </header>
+					</div><!-- .nav-container -->
 
-        </div>
-      </div>
-    </div>
+				</header><!-- .header-container -->
+
+			</div><!-- .col-xs-12 -->
+		</div><!-- .row -->
+
+	</div><!-- .container-fluid -->
+
+
+
+
+
+
+
+
+
+
+
+
+	

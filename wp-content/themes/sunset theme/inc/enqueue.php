@@ -50,9 +50,9 @@
     wp_enqueue_style( 'raleway', 'https://fonts.googleapis.com/css?family=Raleway:200,300,500' );
 
     wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', get_template_directory_uri() . '/javascript/jquery.js', array(), '1.11.3', 'true' );
+    wp_register_script( 'jquery', get_template_directory_uri() . '/javascript/jquery.js', false, '1.11.3', true );
     wp_enqueue_script( 'jquery' );
-    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '3.3.7',  true );
+  wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/javascript/bootstrap.min.js', array('jquery'), '3.3.7', true);
 
   }
 
