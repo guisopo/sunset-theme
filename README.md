@@ -1,4 +1,4 @@
-# Sunset Wordpress Theme 🎨
+# Sunset Wordpress Theme 🌞 
 
 Premium Wordpress theme following the WP theme turorial from [Alecaddd](https://github.com/Alecaddd).
 
